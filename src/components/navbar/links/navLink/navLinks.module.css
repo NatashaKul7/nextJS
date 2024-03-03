@@ -7,6 +7,6 @@
 }
 
 .active {
-  background-color: var(--color);
+  background-color: var(--text);
   color: var(--bg-color);
 }
