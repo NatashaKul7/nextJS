@@ -1,6 +1,6 @@
 import PostCard from "@/components/postCard/PostCard";
 import styles from "./blog.module.css";
-import { getPosts } from "@/lib/data";
+// import { getPosts } from "@/lib/data";
 
 // FETCH DATA WITH AN API
 
@@ -15,9 +15,25 @@ import { getPosts } from "@/lib/data";
 //   return res.json();
 // };
 
+// API ROUTES
+
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/blog", {
+    next: { revalidate: 3600 },
+  });
+
+  if (!res) {
+    throw new Error("Something went wrong");
+  }
+  return res.json();
+};
+
 const BlogPage = async () => {
+  // FETCH DATA WITH AN API
+  const posts = await getData();
+
   // FETCH DATA WITHOUT AN API
-  const posts = await getPosts();
+  // const posts = await getPosts();
 
   return (
     <div className={styles.container}>
