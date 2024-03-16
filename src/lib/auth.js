@@ -45,6 +45,7 @@ export const {
       async authorize(credentials) {
         try {
           const user = await login(credentials);
+          return user;
         } catch (error) {
           return null;
         }
