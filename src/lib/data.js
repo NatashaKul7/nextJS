@@ -6,7 +6,6 @@ export const getPosts = async () => {
   try {
     connectToDb();
     const posts = await Post.find();
-    console.log(posts);
     return posts;
   } catch (error) {
     console.log(error);
@@ -18,8 +17,6 @@ export const getPost = async (slug) => {
   try {
     connectToDb();
     const post = await Post.findOne({ slug });
-
-    console.log(slug);
     return post;
   } catch (error) {
     console.log(error);
