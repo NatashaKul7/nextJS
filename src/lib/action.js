@@ -8,10 +8,10 @@ import { connectToDb } from "./utils";
 import bcrypt from "bcryptjs";
 
 export const addPost = async (previousState, formData) => {
-  const { title, desc, slug, userId } = Object.fromEntries(formData);
+  const { title, desc, slug, userId, img } = Object.fromEntries(formData);
   try {
     connectToDb();
-    const newPost = new Post({ title, desc, slug, userId });
+    const newPost = new Post({ title, desc, slug, userId, img });
 
     await newPost.save();
     console.log("saved to DB");
@@ -59,7 +59,7 @@ export const deleteUser = async (formData) => {
     connectToDb();
 
     await Post.deleteMany({ userId: id });
-    await Post.findByIdAndDelete(id);
+    await User.findByIdAndDelete(id);
     console.log("deleted from DB");
     revalidatePath("/admin");
   } catch (error) {

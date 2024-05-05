@@ -24,11 +24,7 @@ const PostCard = ({ post }) => {
         <Link href={`/blog/${post.slug}`} className={styles.link}>
           READ MORE
         </Link>
-        {/* <Link href={`/blog/post`} className={styles.link}>
-          READ MORE
-        </Link> */}
       </div>
-      ;
     </div>
   );
 };
